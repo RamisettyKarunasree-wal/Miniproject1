@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-Commerce Site</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+    .container {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    body {
+        background: linear-gradient(to bottom right, black, rgb(29, 29, 29), black, rgb(71, 70, 70), black);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    h1 {
+        color: white;
+        text-shadow: 2px 2px grey;
+        margin-bottom: 2%;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    .col {
+        background: linear-gradient(to bottom right, pink, rgb(235, 235, 184), rgb(201, 201, 201));
+    }
+
+    img {
+        width: 100%;
+        height: 300px;
+        border-radius: 15px;
+        border: 1px solid black;
+    }
+
+    article {
+        box-shadow: 4px 4px 2px grey;
+        background: white;
+        text-align: center;
+        border-radius: 15px;
+        padding: 2px;
+        margin-bottom: 4%;
+        margin-top: 4%;
+    }
+
+    .pname,
+    .pprice {
+        margin: 1px;
+        font-weight: 700;
+    }
+
+    .pname {
+        font-style: italic;
+    }
+
+    button {
+        margin-bottom: 2px;
+        font-weight: bold;
+    }
+
+    i {
+        color: black;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome to E-Commerce Website</h1>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/1.jpg">
+                    <div class="product">
+                        <div id="p1name" class="pname">Back Pack</div>
+                        <div id="p1price" class="pprice">120$</div>
+                        <button id="p1btn" class="btn btn-primary" onclick="addCart('p1btn','p1name','p1price')">Add to
+                            cart</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/2.jpg">
+                    <div class="product">
+                        <div id="p2name" class="pname">Headphones</div>
+                        <div id="p2price" class="pprice">500$</div>
+                        <button id="p2btn" class="btn btn-primary" onclick="addCart('p2btn','p2name','p2price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/3.jpg">
+                    <div class="product">
+                        <div id="p3name" class="pname">Sneakers</div>
+                        <div id="p3price" class="pprice">1900$</div>
+                        <button id="p3btn" class="btn btn-primary" onclick="addCart('p3btn','p3name','p3price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/4.jpg">
+                    <div class="product">
+                        <div id="p4name" class="pname">Purse</div>
+                        <div id="p4price" class="pprice">270$</div>
+                        <button id="p4btn" class="btn btn-primary" onclick="addCart('p4btn','p4name','p4price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/5.jpg">
+                    <div class="product">
+                        <div id="p5name" class="pname">Iphone Back Cover</div>
+                        <div id="p5price" class="pprice">70$</div>
+                        <button id="p5btn" class="btn btn-primary" onclick="addCart('p5btn','p5name','p5price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/7.jpg">
+                    <div class="product">
+                        <div id="p7name" class="pname">Men's Hoodie</div>
+                        <div id="p7price" class="pprice">260$</div>
+                        <button id="p7btn" class="btn btn-primary" onclick="addCart('p7btn','p7name','p7price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/6.jpg">
+                    <div class="product">
+                        <div id="p6name" class="pname">Sun Glasses</div>
+                        <div id="p6price" class="pprice">145$</div>
+                        <button id="p6btn" class="btn btn-primary" onclick="addCart('p6btn','p6name','p6price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/8.jpg">
+                    <div class="product">
+                        <div id="p8name" class="pname">Cable</div>
+                        <div id="p8price" class="pprice">190$</div>
+                        <button id="p8btn" class="btn btn-primary" onclick="addCart('p8btn','p8name','p8price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/9.jpg">
+                    <div class="product">
+                        <div id="p9name" class="pname">Bluetooth Speaker</div>
+                        <div id="p9price" class="pprice">350$</div>
+                        <button id="p9btn" class="btn btn-primary" onclick="addCart('p9btn','p9name','p9price')">Add to
+                            cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/10.jpg">
+                    <div class="product">
+                        <div id="p10name" class="pname">Men's Analog Watch</div>
+                        <div id="p10price" class="pprice">570$</div>
+                        <button id="p10btn" class="btn btn-primary" onclick="addCart('p10btn','p10name','p10price')">Add
+                            to cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/11.jpg">
+                    <div class="product">
+                        <div id="p11name" class="pname">Leather Jacket</div>
+                        <div id="p11price" class="pprice">877$</div>
+                        <button id="p11btn" class="btn btn-primary" onclick="addCart('p11btn','p11name','p11price')">Add
+                            to cart </button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-1">
+                <article>
+                    <img src="images/12.jpg">
+                    <div class="product">
+                        <div id="p12name" class="pname">Wired Speakers</div>
+                        <div id="p12price" class="pprice">600$</div>
+                        <button id="p12btn" class="btn btn-primary" onclick="addCart('p12btn','p12name','p12price')">Add
+                            to cart </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <script>
+        let arr = [];
+        function addCart(pbtn, name, price) {
+            let prbtn = document.getElementById(pbtn);
+            let pname = document.getElementById(name);
+            let pprice = document.getElementById(price);
+            if (prbtn.textContent == `Remove from Cart`) {
+                prbtn.textContent = `Add to Cart`;
+                prbtn.style.backgroundColor = "blue";
+                let jsonarr = localStorage.getItem('Products_Cart');
+                let arr1 = JSON.parse(jsonarr);
+                let arr = []
+                for (let i in arr1) {
+                    if (arr1[i].Name == pname.textContent) {
+                        continue;
+                    }
+                    else {
+                        arr.push(arr1[i]);
+                    }
+                }
+                let jsonarr1 = JSON.stringify(arr);
+                localStorage.setItem('Products_Cart', jsonarr1);
+            }
+            else {
+                prbtn.textContent = `Remove from Cart`;
+                prbtn.style.backgroundColor = "green";
+                let obj = {
+                    Name: pname.textContent,
+                    Price: pprice.textContent
+                }
+                if(localStorage.getItem('Products_Cart')){
+                    arr=localStorage.getItem('Products_Cart');
+                    arr=JSON.parse(arr);
+                    arr.push(obj);
+                    arr=JSON.stringify(arr);
+                    localStorage.setItem('Products_Cart',arr)
+                }
+                else{
+                    arr.push(obj);
+                    let jsonarr = JSON.stringify(arr);
+                    localStorage.setItem('Products_Cart', jsonarr);
+                }
+                    
+                }
+            }
+
+        
+    </script>
+</body>
+
+</html>
