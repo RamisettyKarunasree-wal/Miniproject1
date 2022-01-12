@@ -26,11 +26,6 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     }
-
-    .col {
-        background: linear-gradient(to bottom right, pink, rgb(235, 235, 184), rgb(201, 201, 201));
-    }
-
     img {
         width: 100%;
         height: 300px;
@@ -66,52 +61,85 @@
     i {
         color: black;
     }
+    .top-menu{
+        text-align: center;
+        background: chocolate;
+        padding: 3px;
+        border-radius: 50px;
+        margin:auto;
+    }
+    .top-menu a i{
+        border-radius: 50%;
+        font-size: 24px;
+    }
+    .top-menu a{
+        width: 100%;
+        padding:2px;
+        text-decoration: none;
+        color: rgb(242, 247, 247);
+        display: inline-block;
+        border-radius: 50px;
+    }
+    .top-menu a:hover{
+        border: 2px solid black;
+    }
+    i{        
+        font-size: 24px;
+    }
 </style>
 
 <body>
     <div class="container">
         <h1 class="text-center">Welcome to E-Commerce Website</h1>
+        <header class="row top-menu text-center">
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="index.html">Home</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">My Orders</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Filters</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Sort by</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Category</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="Mycart.html" class="cart-sym">My Cart<i class="fa fa-shopping-cart"></i></a></div>
+        </header>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/1.jpg">
+                    <img src="images/1.jpg" id="img1">
                     <div class="product">
                         <div id="p1name" class="pname">Back Pack</div>
                         <div id="p1price" class="pprice">120$</div>
-                        <button id="p1btn" class="btn btn-primary" onclick="addCart('p1btn','p1name','p1price')">Add to
+                        <button id="p1btn" class="btn btn-primary" onclick="addCart('p1btn','p1name','p1price','img1')">Add to
                             cart</button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/2.jpg">
+                    <img src="images/2.jpg" id="img2">
                     <div class="product">
                         <div id="p2name" class="pname">Headphones</div>
                         <div id="p2price" class="pprice">500$</div>
-                        <button id="p2btn" class="btn btn-primary" onclick="addCart('p2btn','p2name','p2price')">Add to
+                        <button id="p2btn" class="btn btn-primary" onclick="addCart('p2btn','p2name','p2price','img2')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/3.jpg">
+                    <img src="images/3.jpg" id="img3">
                     <div class="product">
                         <div id="p3name" class="pname">Sneakers</div>
                         <div id="p3price" class="pprice">1900$</div>
-                        <button id="p3btn" class="btn btn-primary" onclick="addCart('p3btn','p3name','p3price')">Add to
+                        <button id="p3btn" class="btn btn-primary" onclick="addCart('p3btn','p3name','p3price','img3')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/4.jpg">
+                    <img src="images/4.jpg" id="img4">
                     <div class="product">
                         <div id="p4name" class="pname">Purse</div>
                         <div id="p4price" class="pprice">270$</div>
-                        <button id="p4btn" class="btn btn-primary" onclick="addCart('p4btn','p4name','p4price')">Add to
+                        <button id="p4btn" class="btn btn-primary" onclick="addCart('p4btn','p4name','p4price','img4')">Add to
                             cart </button>
                     </div>
                 </article>
@@ -120,44 +148,44 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/5.jpg">
+                    <img src="images/5.jpg" id="img5">
                     <div class="product">
                         <div id="p5name" class="pname">Iphone Back Cover</div>
                         <div id="p5price" class="pprice">70$</div>
-                        <button id="p5btn" class="btn btn-primary" onclick="addCart('p5btn','p5name','p5price')">Add to
+                        <button id="p5btn" class="btn btn-primary" onclick="addCart('p5btn','p5name','p5price','img5')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/7.jpg">
+                    <img src="images/7.jpg" id="img7">
                     <div class="product">
                         <div id="p7name" class="pname">Men's Hoodie</div>
                         <div id="p7price" class="pprice">260$</div>
-                        <button id="p7btn" class="btn btn-primary" onclick="addCart('p7btn','p7name','p7price')">Add to
+                        <button id="p7btn" class="btn btn-primary" onclick="addCart('p7btn','p7name','p7price','img7')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/6.jpg">
+                    <img src="images/6.jpg" id="img6">
                     <div class="product">
                         <div id="p6name" class="pname">Sun Glasses</div>
                         <div id="p6price" class="pprice">145$</div>
-                        <button id="p6btn" class="btn btn-primary" onclick="addCart('p6btn','p6name','p6price')">Add to
+                        <button id="p6btn" class="btn btn-primary" onclick="addCart('p6btn','p6name','p6price','img6')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/8.jpg">
+                    <img src="images/8.jpg" id="img8">
                     <div class="product">
                         <div id="p8name" class="pname">Cable</div>
                         <div id="p8price" class="pprice">190$</div>
-                        <button id="p8btn" class="btn btn-primary" onclick="addCart('p8btn','p8name','p8price')">Add to
+                        <button id="p8btn" class="btn btn-primary" onclick="addCart('p8btn','p8name','p8price','img8')">Add to
                             cart </button>
                     </div>
                 </article>
@@ -166,44 +194,44 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/9.jpg">
+                    <img src="images/9.jpg" id="img9">
                     <div class="product">
                         <div id="p9name" class="pname">Bluetooth Speaker</div>
                         <div id="p9price" class="pprice">350$</div>
-                        <button id="p9btn" class="btn btn-primary" onclick="addCart('p9btn','p9name','p9price')">Add to
+                        <button id="p9btn" class="btn btn-primary" onclick="addCart('p9btn','p9name','p9price','img9')">Add to
                             cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/10.jpg">
+                    <img src="images/10.jpg" id="img10">
                     <div class="product">
                         <div id="p10name" class="pname">Men's Analog Watch</div>
                         <div id="p10price" class="pprice">570$</div>
-                        <button id="p10btn" class="btn btn-primary" onclick="addCart('p10btn','p10name','p10price')">Add
+                        <button id="p10btn" class="btn btn-primary" onclick="addCart('p10btn','p10name','p10price','img10')">Add
                             to cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/11.jpg">
+                    <img src="images/11.jpg" id="img11">
                     <div class="product">
                         <div id="p11name" class="pname">Leather Jacket</div>
                         <div id="p11price" class="pprice">877$</div>
-                        <button id="p11btn" class="btn btn-primary" onclick="addCart('p11btn','p11name','p11price')">Add
+                        <button id="p11btn" class="btn btn-primary" onclick="addCart('p11btn','p11name','p11price','1mg11')">Add
                             to cart </button>
                     </div>
                 </article>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-1">
                 <article>
-                    <img src="images/12.jpg">
+                    <img src="images/12.jpg" id="img12">
                     <div class="product">
                         <div id="p12name" class="pname">Wired Speakers</div>
                         <div id="p12price" class="pprice">600$</div>
-                        <button id="p12btn" class="btn btn-primary" onclick="addCart('p12btn','p12name','p12price')">Add
+                        <button id="p12btn" class="btn btn-primary" onclick="addCart('p12btn','p12name','p12price','img12')">Add
                             to cart </button>
                     </div>
                 </article>
@@ -212,10 +240,11 @@
     </div>
     <script>
         let arr = [];
-        function addCart(pbtn, name, price) {
+        function addCart(pbtn, name, price,imgsrc) {
             let prbtn = document.getElementById(pbtn);
             let pname = document.getElementById(name);
             let pprice = document.getElementById(price);
+            let Imgsrc = document.getElementById(imgsrc);
             if (prbtn.textContent == `Remove from Cart`) {
                 prbtn.textContent = `Add to Cart`;
                 prbtn.style.backgroundColor = "blue";
@@ -238,7 +267,8 @@
                 prbtn.style.backgroundColor = "green";
                 let obj = {
                     Name: pname.textContent,
-                    Price: pprice.textContent
+                    Price: pprice.textContent,
+                    Image: Imgsrc.src
                 }
                 if(localStorage.getItem('Products_Cart')){
                     arr=localStorage.getItem('Products_Cart');

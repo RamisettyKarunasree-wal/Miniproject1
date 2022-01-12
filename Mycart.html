@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-Commerce Site</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+    .container {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    body {
+        background: linear-gradient(270deg,rgb(241, 204, 210),rgb(187, 214, 187),rgb(151, 151, 206));
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-size: cover;
+    }
+
+    h1 {
+        color: black;
+        text-shadow: 2px 2px grey;
+        margin-bottom: 2%;
+        font-weight: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-top: 4px;
+    }
+
+    img {
+        width: 100%;
+        height: 300px;
+        border-radius: 15px;
+        border: 1px solid black;
+    }
+
+    article {
+        box-shadow: 4px 4px 2px grey;
+        background: white;
+        text-align: center;
+        border-radius: 15px;
+        padding: 2px;
+        margin-bottom: 4%;
+        margin-top: 4%;
+        width: 300px;
+    }
+
+    button {
+        margin-bottom: 2px;
+        font-weight: bold;
+        border-radius: 50px;
+        padding: 7px;
+    }
+
+    i {
+        color: black;
+    }
+
+    .top-menu {
+        text-align: center;
+        background: chocolate;
+        padding: 3px;
+        border-radius: 50px;
+        margin: auto;
+    }
+
+    .top-menu a i {
+        border-radius: 50%;
+        font-size: 24px;
+    }
+
+    .top-menu a {
+        width: 100%;
+        padding: 2px;
+        text-decoration: none;
+        color: rgb(242, 247, 247);
+        display: inline-block;
+        border-radius: 50px;
+    }
+
+    .top-menu a:hover {
+        border: 2px solid black;
+    }
+
+    i {
+        font-size: 24px;
+    }
+
+    #no_items,
+    #total-price {
+        color: black;
+        font-style: italic;
+        text-align: center;        
+        padding: 3px;
+        width: fit-content;
+        border-radius: 100px;
+        border: 2px solid white;
+        background-color: violet;
+        font-size: 24px;
+        font-weight: 800;
+    }
+</style>
+
+<body>
+    <div class="container" id="mainBody">
+        <header class="row top-menu text-center">
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="index.html">Home</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">My Orders</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Filters</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Sort by</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Category</a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="Mycart.html" class="cart-sym">My Cart<i
+                        class="fa fa-shopping-cart"></i></a></div>
+        </header>
+        <h1 class="text-center">Items in Cart</h1>
+
+    </div>
+    <script>
+        function removeItem(name) {
+            let jarr = localStorage.getItem('Products_Cart');
+            let parr = JSON.parse(jarr);
+            let Modifiedarr = []
+            for (let i in parr) {
+                if (parr[i].Name == name) {
+                    continue;
+                }
+                else {
+                    Modifiedarr.push(parr[i]);
+                }
+            }
+            let Jarr = JSON.stringify(Modifiedarr);
+            localStorage.setItem('Products_Cart', Jarr);
+            location.reload();
+        }
+        let jsonarr = localStorage.getItem('Products_Cart');
+        let main_body = document.getElementById('mainBody');
+        console.log(jsonarr)
+        if (jsonarr == null || jsonarr == "[]") {
+            let no_items = document.createElement("div");
+            no_items.textContent = "No Items Added";
+            no_items.setAttribute('id', 'no_items');
+            main_body.appendChild(no_items);
+
+        }
+        else {
+            let arr = JSON.parse(jsonarr);
+            for (let i in arr) {
+                let image = arr[i].Image;
+                let name = arr[i].Name;
+                let price = arr[i].Price;
+                let article_tag = document.createElement("article");
+                let image_tag = document.createElement("img");
+                let name_tag = document.createElement("div");
+                let price_tag = document.createElement("div");
+                let button_tag = document.createElement("button");
+                image_tag.src = image;
+                name_tag.textContent = name;
+                price_tag.textContent = price;
+                button_tag.textContent = `Remove Item`;
+                button_tag.style.backgroundColor = "red";
+                button_tag.onclick = function () { removeItem(name) };
+                article_tag.appendChild(image_tag);
+                article_tag.appendChild(name_tag);
+                article_tag.appendChild(price_tag);
+                article_tag.appendChild(button_tag);
+                main_body.appendChild(article_tag);
+            }
+            let sum = 0;
+            for (let i in arr) {
+                let cost = arr[i].Price;
+                let c = "";
+                for (let j in cost) {
+                    if (cost[j] == '$') {
+                        break;
+                    }
+                    else {
+                        c += cost[j];
+                    }
+                }
+                sum += parseInt(c);
+            }
+            let total = document.createElement('div');
+            total.setAttribute('id', 'total-price');
+            total.textContent = `Total Cart Price : ${sum}$`;
+            main_body.appendChild(total);
+        }
+
+
+    </script>
+</body>
+
+</html>
