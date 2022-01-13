@@ -86,6 +86,13 @@
     i{        
         font-size: 24px;
     }
+    #cart-notification{
+        background: red;
+        padding:1px 6px;
+        font-size: 15px;
+        color: white;
+        margin-left: 2px;
+    }
 </style>
 
 <body>
@@ -97,7 +104,7 @@
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Filters</a></div>
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Sort by</a></div>
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Category</a></div>
-            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="Mycart.html" class="cart-sym">My Cart<i class="fa fa-shopping-cart"></i></a></div>
+            <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="Mycart.html" class="cart-sym">My Cart<i class="fa fa-shopping-cart"></i><i id="cart-notification"> </i></a></div>
         </header>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-1">
@@ -220,7 +227,7 @@
                     <div class="product">
                         <div id="p11name" class="pname">Leather Jacket</div>
                         <div id="p11price" class="pprice">877$</div>
-                        <button id="p11btn" class="btn btn-primary" onclick="addCart('p11btn','p11name','p11price','1mg11')">Add
+                        <button id="p11btn" class="btn btn-primary" onclick="addCart('p11btn','p11name','p11price','img11')">Add
                             to cart </button>
                     </div>
                 </article>
@@ -239,6 +246,25 @@
         </div>
     </div>
     <script>
+        function retnum(str) {
+            var num = str.replace(/[^0-9]/g, '');
+            return parseInt(num, 10);
+        }
+        let dbarr = localStorage.getItem('Products_Cart');
+        dbarr = JSON.parse(dbarr);
+        document.getElementById('cart-notification').textContent=dbarr.length;
+        let proname = document.querySelectorAll('.pname');
+        for (let i in dbarr) {
+            for (let j = 0; j < proname.length; j++) {
+                if (dbarr[i].Name == proname[j].textContent) {
+                    let n = retnum(proname[j].id);
+                    let btn_id = 'p' + n + 'btn';
+                    btn_id = document.getElementById(btn_id);
+                    btn_id.textContent = `Remove from Cart`;
+                    btn_id.style.backgroundColor = "green";
+                }
+            }
+        }
         let arr = [];
         function addCart(pbtn, name, price,imgsrc) {
             let prbtn = document.getElementById(pbtn);
@@ -268,7 +294,8 @@
                 let obj = {
                     Name: pname.textContent,
                     Price: pprice.textContent,
-                    Image: Imgsrc.src
+                    Image: Imgsrc.src,
+                    Quantity: 1
                 }
                 if(localStorage.getItem('Products_Cart')){
                     arr=localStorage.getItem('Products_Cart');
@@ -283,8 +310,9 @@
                     localStorage.setItem('Products_Cart', jsonarr);
                 }
                     
-                }
             }
+            location.reload();
+        }
 
         
     </script>

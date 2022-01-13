@@ -14,7 +14,7 @@
     }
 
     body {
-        background: linear-gradient(270deg,rgb(241, 204, 210),rgb(187, 214, 187),rgb(151, 151, 206));
+        background: linear-gradient(270deg, rgb(241, 204, 210), rgb(187, 214, 187), rgb(151, 151, 206));
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         background-size: cover;
     }
@@ -91,7 +91,7 @@
     #total-price {
         color: black;
         font-style: italic;
-        text-align: center;        
+        text-align: center;
         padding: 3px;
         width: fit-content;
         border-radius: 100px;
@@ -99,6 +99,14 @@
         background-color: violet;
         font-size: 24px;
         font-weight: 800;
+    }
+
+    #cart-notification {
+        background: red;
+        padding: 1px 6px;
+        font-size: 15px;
+        color: white;
+        margin-left: 2px;
     }
 </style>
 
@@ -111,12 +119,44 @@
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Sort by</a></div>
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="#">Category</a></div>
             <div class="col-md-4 col-lg-2 col-sm-6 text-center"><a href="Mycart.html" class="cart-sym">My Cart<i
-                        class="fa fa-shopping-cart"></i></a></div>
+                        class="fa fa-shopping-cart"></i><i id="cart-notification">0</i></a></div>
         </header>
         <h1 class="text-center">Items in Cart</h1>
 
     </div>
     <script>
+        let dbarr = JSON.parse(localStorage.getItem('Products_Cart'));
+        document.getElementById('cart-notification').textContent = dbarr.length;
+        function add(p, name) {
+            p.textContent = parseInt(p.textContent) + 1;
+            let array = JSON.parse(localStorage.getItem('Products_Cart'));
+            for (let i in array) {
+                if (array[i].Name == name) {
+                    array[i].Quantity = p.textContent;
+                }
+            }
+            let marr = JSON.stringify(array);
+            localStorage.setItem('Products_Cart', marr);
+            location.reload();
+        }
+        function sub(p, name) {
+            if (p.textContent == '1') {
+                p.textContent = 1;
+            }
+            else {
+                p.textContent = parseInt(p.textContent) - 1;
+            }
+            let array = JSON.parse(localStorage.getItem('Products_Cart'));
+
+            for (let i in array) {
+                if (array[i].Name == name) {
+                    array[i].Quantity = p.textContent;
+                }
+            }
+            let marr = JSON.stringify(array);
+            localStorage.setItem('Products_Cart', marr);
+            location.reload();
+        }
         function removeItem(name) {
             let jarr = localStorage.getItem('Products_Cart');
             let parr = JSON.parse(jarr);
@@ -135,7 +175,6 @@
         }
         let jsonarr = localStorage.getItem('Products_Cart');
         let main_body = document.getElementById('mainBody');
-        console.log(jsonarr)
         if (jsonarr == null || jsonarr == "[]") {
             let no_items = document.createElement("div");
             no_items.textContent = "No Items Added";
@@ -149,6 +188,7 @@
                 let image = arr[i].Image;
                 let name = arr[i].Name;
                 let price = arr[i].Price;
+                let q = arr[i].Quantity;
                 let article_tag = document.createElement("article");
                 let image_tag = document.createElement("img");
                 let name_tag = document.createElement("div");
@@ -164,11 +204,29 @@
                 article_tag.appendChild(name_tag);
                 article_tag.appendChild(price_tag);
                 article_tag.appendChild(button_tag);
+                let quantity_tag = document.createElement("div");
+                quantity_tag.setAttribute('id', 'quantity-tag');
+                let quan_content = document.createElement('b');
+                quan_content.textContent = q;
+                let increment = document.createElement("button");
+                increment.textContent = '+';
+                increment.onclick = function () { add(quan_content, name) };
+                let decrement = document.createElement("button");
+                decrement.textContent = '-';
+                decrement.onclick = function () { sub(quan_content, name) };
+                let quan = document.createElement('b');
+                quan.textContent = `Quantity : `
+                quantity_tag.appendChild(decrement);
+                quantity_tag.appendChild(quan);
+                quantity_tag.appendChild(quan_content);
+                quantity_tag.appendChild(increment);
+                article_tag.appendChild(quantity_tag);
                 main_body.appendChild(article_tag);
             }
             let sum = 0;
             for (let i in arr) {
                 let cost = arr[i].Price;
+                let q = arr[i].Quantity;
                 let c = "";
                 for (let j in cost) {
                     if (cost[j] == '$') {
@@ -178,6 +236,7 @@
                         c += cost[j];
                     }
                 }
+                c = parseInt(c) * q;
                 sum += parseInt(c);
             }
             let total = document.createElement('div');
