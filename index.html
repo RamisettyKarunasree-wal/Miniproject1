@@ -252,7 +252,12 @@
         }
         let dbarr = localStorage.getItem('Products_Cart');
         dbarr = JSON.parse(dbarr);
+if(dbarr){
         document.getElementById('cart-notification').textContent=dbarr.length;
+}
+else{
+document.getElementById('cart-notification').textContent=0;
+}
         let proname = document.querySelectorAll('.pname');
         for (let i in dbarr) {
             for (let j = 0; j < proname.length; j++) {
